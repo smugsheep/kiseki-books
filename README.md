@@ -3,7 +3,8 @@
 reader for books found in the kiseki/trails game series. 
 
 notes: 
-* raw book text (html) scrapped from the Fandom wiki via Python script, not available in repo ( because bloat)
+* raw book text (html) scrapped from the Fandom wiki via Python script, not available in repo (because bloat)
+* the scraper file is a mess, use at own risk
 * some texts not available in EN and/or JA randomly since the Fandom wiki is horribly kept
 
 to-do:
