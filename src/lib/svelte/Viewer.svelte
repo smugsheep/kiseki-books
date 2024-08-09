@@ -1,42 +1,47 @@
 <script>
-    import { lang } from '../stores';
-    import { onMount, tick } from 'svelte';
-    export let selectedSeries = { 
-        title: 'Welcome.',
-        title_ja: 'ようこそ。',
-        id: 9999,
-        books: [{ 
-            part: 1, 
-            text_en: '<blockquote>Choose a series from the menu to read.</blockquote>',
-            text_ja: '<blockquote>メニュからシリーズを選んでください。</blockquote>',
-        }] 
-    };
+    import { lang } from '$lib/stores';
+    import { page } from '$app/stores';
+    import { goto } from '$app/navigation';
+    import { browser } from '$app/environment';
+    import { onMount } from 'svelte';
 
-    let currentPart = 1;
-    let prevID = selectedSeries.id;
-
-    // Reactive statement to reset currentPart and scroll to top when selectedSeries changes
-    $: if (prevID !== selectedSeries.id) {
-        currentPart = 1;
-        prevID = selectedSeries.id;
-        resetScroll();
-    }
-
-    // Reactive statement to handle currentPart change
-    $: currentPart, resetScroll();
+    export let selectedSeries;
 
     let currentTitle;
+    let currentPart;
     let currentText;
+    let viewer;
+    let top;
+    let prevSeriesID;
+
+    if ($page.data.part && $page.data.part <= selectedSeries.books.length) {
+        currentPart = parseInt($page.data.part);
+    } else {
+        currentPart = 1;
+    }
+
+    $: currentPart, resetScroll();
 
     $: updateTitleAndText(selectedSeries, currentPart, $lang);
 
     function updateTitleAndText(series, part, lang) {
-        let book = series.books.find(book => book.part === part);
+        if (prevSeriesID && series.id !== prevSeriesID) {
+            currentPart = 1;
+            part = 1;
+        }
+
+        prevSeriesID = series.id;
+        if (browser && $page.url.pathname !== '/') {
+            setTimeout(() => {
+                goto(`${$page.url.pathname}?part=${currentPart}`, false);
+            }, 1);
+        }
+
+        let book = series.books.find(book => book.part == part);
 
         if (lang === 'en') {
             currentTitle = series.title;
             currentText = book.text_en;
-
             return;
         }
         
@@ -52,29 +57,31 @@
         }
     }
 
-    let viewer;
-    let top;
-
     async function resetScroll() {
         if (viewer && selectedSeries.id != 9999) {
             viewer.scrollTop = 0;
-            top.parentElement.parentElement.scrollIntoView({ behavior: 'auto', block: 'start' });
+            top.parentElement.parentElement.scrollIntoView({ 
+                behavior: 'auto', 
+                block: 'start' 
+            });
         }
     }
 
     function handleKeydown(event) {
-        if (event.key === 'ArrowRight') {
-            changePart('right');
-        } else if (event.key === 'ArrowLeft') {
-            changePart('left');
+        switch (event.key) {
+            case 'ArrowRight':
+                changePart('right');
+                break;
+            case 'ArrowLeft':
+                changePart('left');
+                break;
         }
     }
 
-    // Call resetScroll when component mounts
     onMount(() => {
         resetScroll();
-
         window.addEventListener('keydown', handleKeydown);
+
         return () => {
             window.removeEventListener('keydown', handleKeydown);
         };
@@ -99,8 +106,12 @@
                 disabled={selectedSeries.books.length < 2}
             >
                 {#each selectedSeries.books as book}
-                    <option 
-                        value="{book.part}">{selectedSeries.books.length > 1 ? ($lang === 'en' ? book.title : book.title_ja) : '-'}
+                    <option value="{book.part}">
+                        {
+                            selectedSeries.books.length > 1 
+                            ? ($lang === 'en' ? book.title : book.title_ja) 
+                            : '-'
+                        }
                     </option>
                 {/each}
             </select>
@@ -120,7 +131,13 @@
 </div>
 
 <style>
-    @import '../resources/scrollbar.css';
+    @import '$lib/resources/scrollbar.css';
+
+    .viewer-wrapper {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
 
     .top {
         display: flex;
@@ -132,12 +149,6 @@
 
     h1 {
         margin: 0;
-    }
-
-    .viewer-wrapper {
-        display: flex;
-        flex-direction: column;
-        flex: 1;
     }
 
     .part-picker {
@@ -205,6 +216,11 @@
             padding: 0;
         }
 
+        #viewer {
+            font-size: 1.4em;
+            padding-bottom: 6em;
+        }
+
 		.top {
             flex-direction: column;
             align-items: center;
@@ -226,11 +242,6 @@
         h1 {
             font-size: 1.4em;
             color: white;
-        }
-
-        #viewer {
-            font-size: 1.4em;
-            padding-bottom: 6em;
         }
 
         select, option, button {

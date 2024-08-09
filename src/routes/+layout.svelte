@@ -1,5 +1,6 @@
 <script>
-    import LanguagePicker from "../lib/svelte/LanguagePicker.svelte";
+    import Sidebar from '$lib/svelte/Sidebar.svelte';
+    import LanguagePicker from "$lib/svelte/LanguagePicker.svelte";
 </script>
 
 <main>
@@ -8,11 +9,16 @@
         <LanguagePicker />
     </div>
 
-    <slot />
-
+    <div class="content">
+        <Sidebar />
+        <!-- Viewer slot -->
+        <slot />
+    </div>
 </main>
 
 <style>
+    @import '$lib/resources/global.css';
+
     main {
         margin: 0 20vw;
         height: 100vh;
@@ -34,6 +40,17 @@
         margin: 0;
     }
 
+    .content {
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        padding-top: 1em;
+        overflow: hidden;
+        margin-bottom: 1em;
+        justify-content: space-between;
+        gap: 2em;
+    }
+
     @media (max-width: 1280px) {
 		main {
 			max-width: none;
@@ -50,6 +67,11 @@
 
         h1 {
             font-size: 2em;
+        }
+
+        .content {
+            flex-direction: column;
+            overflow: visible;
         }
 	}
 </style>
