@@ -1,4 +1,5 @@
 <script>
+    import { base } from "$app/paths";
     import { lang } from '../stores.js';
 
     const toggleLang = () => {
@@ -7,10 +8,10 @@
 </script>
 
 <nav>
-    <a href="/" class="nav-item">
+    <a href="{base}/" class="nav-item">
         home
     </a>
-    <!-- <a href="/about" class="nav-item">
+    <!-- <a href="{base}/about" class="nav-item">
         about
     </a> -->
     <a href="" class="nav-item" on:click={toggleLang}>

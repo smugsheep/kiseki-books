@@ -3,6 +3,7 @@
     import { Hamburger, Close } from '$lib/resources/icons';
     import { lang } from '$lib/stores';
     import { page } from '$app/stores';
+    import { base } from "$app/paths";
     
     let sidebar;
     let sidebarOpen = false;
@@ -67,7 +68,7 @@
             {#each game.series as series}
                 <li class="book-item">
                     <a
-                        href="/{series.slug}?part=1"
+                        href="{base}/{series.slug}?part=1"
                         class="{
                             (series.slug === $page.params.series) 
                             ? 'selected' 
