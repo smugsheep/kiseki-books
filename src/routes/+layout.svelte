@@ -72,6 +72,7 @@
         .content {
             flex-direction: column;
             overflow: visible;
+            padding: 0;
         }
 	}
 </style>

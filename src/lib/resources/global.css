@@ -19,6 +19,10 @@ p {
     margin: 16px 0;
 }
 
+a, a:visited {
+    color: #244b7d;
+}
+
 figure {
     margin: 0;
     margin-right: 2em;
@@ -44,6 +48,10 @@ blockquote li {
     text-align: left;
 }
 
+blockquote > *:first-child {
+    margin-top: 0;
+}
+
 dt {
     font-weight: 700;
 }
@@ -61,6 +69,10 @@ dt {
     figure {
         float: none;
         margin: auto;
+    }
+
+    blockquote {
+        margin: 1em 0;
     }
 
     p:has(> b) {

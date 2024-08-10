@@ -31,7 +31,7 @@
         }
 
         prevSeriesID = series.id;
-        if (browser && $page.url.pathname !== '/') {
+        if (browser && $page.url.pathname.includes(series.slug)) {
             setTimeout(() => {
                 goto(`${$page.url.pathname}?part=${currentPart}`, false);
             }, 1);
@@ -155,17 +155,16 @@
         margin-left: auto;
         display: flex;
         align-items: center;
-        gap: 0.5em; /* Add space between elements */
+        gap: 0.5em;
     }
 
     select, option, button {
-        font-family: inherit;
-        font-size: 100%;
-        font-size: 1em;
         height: 42px;
+        background-color: #f9f9f9;
+        font-family: inherit;
+        font-size: 1em;
         border: 1px solid #ccc;
         border-radius: 4px;
-        background-color: #f9f9f9;
         cursor: pointer;
         transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
@@ -218,25 +217,21 @@
 
         #viewer {
             font-size: 1.4em;
-            padding-bottom: 6em;
+            padding-bottom: 5em;
         }
 
 		.top {
+            width: calc(100% - 32px);
+            background: #313131;
+            text-align: center;
             flex-direction: column;
             align-items: center;
             gap: .5em;
-            /* position: sticky;
-            top: 0; 
-            padding-bottom: 0.5em; */
-            background: #313131;
-            text-align: center;
-
-            width: calc(100% - 32px);
+            position: fixed;
             bottom: 0;
             left: -16px;
-            position: fixed;
             margin: 0;
-            padding: 1em 2em;
+            padding: .8em 2em;
         }
         
         h1 {
@@ -249,4 +244,10 @@
             border-radius: 24px;
         }
 	}
+
+    @media (max-width: 768px) {
+        #viewer, h1 {
+            font-size: 1.2em;
+        }
+    }
 </style>

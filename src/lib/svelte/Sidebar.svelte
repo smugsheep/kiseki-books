@@ -118,7 +118,7 @@
     }
 
     .game-divider:hover {
-        color: #5a5a5a;
+        color: #6c6c6c;
     }
 
     button, a {

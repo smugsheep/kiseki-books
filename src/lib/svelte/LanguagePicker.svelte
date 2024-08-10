@@ -6,40 +6,53 @@
     };
 </script>
 
-<div>
-    <button on:click={toggleLang}>
-        switch to
-        {#if $lang === 'en'}
-            <span>日本語</span>
-        {:else if $lang === 'ja'}
-            <span>English</span>
-        {/if}
-    </button>
-</div>
+<nav>
+    <a href="/" class="nav-item">
+        home
+    </a>
+    <!-- <a href="/about" class="nav-item">
+        about
+    </a> -->
+    <a href="" class="nav-item" on:click={toggleLang}>
+        switch to {$lang === 'en' ? '日本語' : 'English'}
+    </a>
+</nav>
 
 <style>
-    button {
+    nav {
+        display: flex;
+        flex-direction: row;
+        padding: 0.3em 0;
+    }
+
+    .nav-item {
         font-size: 1.28em;
         background: none;
         border: none;
+        text-decoration: none;
         cursor: pointer;
-        padding: 0.3em 0;
         display: flex;
         flex-direction: row;
         align-items: end;
         white-space: nowrap;
     }
 
-    button:hover {
+    .nav-item:hover {
         color: #007bff;
     }
-    
-    span::before {
-        content: '\00a0';
+
+    .nav-item:not(:last-child)::after {
+        padding: 0 8px;
+        content: '/';
+        color: #333;
+    }
+
+    a, a:visited {
+        color: inherit;
     }
 
     @media (max-width: 1280px) {
-		button {
+		nav, .nav-item {
             padding: 0;
         }
 	}
