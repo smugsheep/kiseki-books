@@ -6,7 +6,7 @@ node_modules
 /.svelte-kit
 /.kiseki-books-old
 /src/lib/bookmaker/books
-/build
+# /build
 
 # OS
 .DS_Store
