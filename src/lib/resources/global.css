@@ -52,6 +52,12 @@ blockquote > *:first-child {
     margin-top: 0;
 }
 
+hr {
+    border: 0;
+    height: 1px;
+    background-color: #333;
+}
+
 dt {
     font-weight: 700;
 }
@@ -65,7 +71,7 @@ dt {
     color: rgb(175, 175, 175);
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1080px) {
     figure {
         float: none;
         margin: auto;

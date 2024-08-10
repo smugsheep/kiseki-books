@@ -52,7 +52,7 @@
         color: inherit;
     }
 
-    @media (max-width: 1280px) {
+    @media (max-width: 1080px) {
 		nav, .nav-item {
             padding: 0;
         }

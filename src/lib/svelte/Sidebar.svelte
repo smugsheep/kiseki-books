@@ -68,7 +68,7 @@
             {#each game.series as series}
                 <li class="book-item">
                     <a
-                        href="{base}/{series.slug}?part=1"
+                        href="{base}/{series.slug}/1"
                         class="{
                             (series.slug === $page.params.series) 
                             ? 'selected' 
@@ -112,6 +112,7 @@
         display: flex;
         align-items: center;
         gap: 6px;
+        width: 100%;
     }
 
     .game-divider span {
@@ -150,7 +151,7 @@
         transition: transform 0.25s ease;
     }
 
-    @media (max-width: 1280px) {
+    @media (max-width: 1080px) {
         .sidebar {
             position: fixed;
             top: 0;
@@ -200,7 +201,7 @@
         }
     }
 
-    @media (min-width: 1280px) {
+    @media (min-width: 1080px) {
         .sidebar-toggle {
             display: none;
         }

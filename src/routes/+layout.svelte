@@ -51,7 +51,13 @@
         gap: 2em;
     }
 
-    @media (max-width: 1280px) {
+    @media (max-width: 1440px) {
+        main {
+            margin: 0 10vw;
+        }
+    }
+
+    @media (max-width: 1080px) {
 		main {
 			max-width: none;
             margin: 0;

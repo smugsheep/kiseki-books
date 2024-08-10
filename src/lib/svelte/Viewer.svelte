@@ -1,6 +1,7 @@
 <script>
     import { lang } from '$lib/stores';
     import { page } from '$app/stores';
+    import { base } from "$app/paths";
     import { goto } from '$app/navigation';
     import { browser } from '$app/environment';
     import { onMount } from 'svelte';
@@ -14,8 +15,8 @@
     let top;
     let prevSeriesID;
 
-    if ($page.data.part && $page.data.part <= selectedSeries.books.length) {
-        currentPart = parseInt($page.data.part);
+    if ($page.params.part && $page.params.part <= selectedSeries.books.length) {
+        currentPart = parseInt($page.params.part);
     } else {
         currentPart = 1;
     }
@@ -31,9 +32,10 @@
         }
 
         prevSeriesID = series.id;
+
         if (browser && $page.url.pathname.includes(series.slug)) {
             setTimeout(() => {
-                goto(`${$page.url.pathname}?part=${currentPart}`, false);
+                goto(`${base}/${series.slug}/${currentPart}`, false);
             }, 1);
         }
 
@@ -209,7 +211,7 @@
         overflow-y: scroll;
     }
 
-    @media (max-width: 1280px) {
+    @media (max-width: 1080px) {
         #viewer, .part-picker {
             margin: 0;
             padding: 0;
