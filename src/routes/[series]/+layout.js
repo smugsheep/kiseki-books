@@ -6,7 +6,14 @@ export function load({ params }) {
         const series = game.series.find((serie) => serie.slug === params.series);
 
         if (series) {
-            return { series };
+            if (params.part > series.books.length) {
+                params.part = 1;
+            }
+
+            return { 
+                series: series, 
+                part: params.part 
+            };
         }
     }
     

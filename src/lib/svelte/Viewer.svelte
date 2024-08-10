@@ -7,19 +7,13 @@
     import { onMount } from 'svelte';
 
     export let selectedSeries;
+    export let currentPart = 1;
 
     let currentTitle;
-    let currentPart;
     let currentText;
     let viewer;
     let top;
     let prevSeriesID;
-
-    if ($page.params.part && $page.params.part <= selectedSeries.books.length) {
-        currentPart = parseInt($page.params.part);
-    } else {
-        currentPart = 1;
-    }
 
     $: currentPart, resetScroll();
 

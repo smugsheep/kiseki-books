@@ -226,8 +226,6 @@ def html_into_json(data):
         for serie in game['series']:
             folder = os.path.join(dir, 'books', serie['file'])
 
-            # print(f'{{ slug: \'{serie['slug']}\' }},')
-
             for book in serie['books']:
                 file_en = os.path.join(folder, 'en', f'{book['part']}.html')
                 file_ja = os.path.join(folder, 'ja', f'{book['part']}.html')
@@ -238,7 +236,9 @@ def html_into_json(data):
                 with open(file_ja, 'r', encoding='utf-8') as f:
                     book['text_ja'] = f.read()
 
-                # print(f'<a href="{{base}}/{serie['slug']}/{book['part']}"></a>')
+                print(f'{{ series: "{serie['slug']}", part: "{book['part']}" }},')
+
+
     
     return data
 
