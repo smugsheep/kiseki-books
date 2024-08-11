@@ -73,7 +73,7 @@ blockquote > *:first-child {
 hr {
     border: 0;
     height: 1px;
-    background-color: var(--main);
+    background-color: var(--primary);
 }
 
 dt {
