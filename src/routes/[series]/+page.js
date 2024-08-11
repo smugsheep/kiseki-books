@@ -1,71 +1,13 @@
+import data from '$lib/bookmaker/kiseki-books-full.json';
+
 export function entries() {
-	return [
-		{ series: 'liberl_news_sky_fc' },
-        { series: '31_cypress_trees' },
-        { series: 'carnelia' },
-        { series: 'erbe_woodpecker' },
-        { series: 'hertzs_adventure' },
-        { series: 'hundred_days_war' },
-        { series: 'im_a_bracer' },
-        { series: 'kitty-talk_for_dummies' },
-        { series: 'ruan_economics' },
-        { series: 'septium_optic_annals' },
-        { series: 'tomorrows_cooking' },
-        { series: 'liberl_news_sky_sc' },
-        { series: 'blooms_recipe' },
-        { series: 'the_doll_knight' },
-        { series: 'gambler_jack' },
-        { series: 'lighthouse_manual' },
-        { series: 'data_crystals' },
-        { series: 'liberl_news_sky_3rd' },
-        { series: 'crossbell_times_zero' },
-        { series: 'approved_vehicle_list' },
-        { series: 'arc_en_ciel_enthusiasts' },
-        { series: 'back_alley_doctor_glenn' },
-        { series: 'lip_smack_quarterly' },
-        { series: 'mark_and_the_witch_of_the_deep_forest' },
-        { series: 'monster_damage_report' },
-        { series: 'paranormal_crossbell_collection' },
-        { series: 'the_best_way_to_use_5_minutes' },
-        { series: 'saint_and_the_white_wolf' },
-        { series: 'train_fanatic_recs' },
-        { series: 'women_who_changed_the_world' },
-        { series: 'information_terminals' },
-        { series: 'crossbell_times_azure' },
-        { series: 'cryptid_survey_report' },
-        { series: 'sunshine_agnes' },
-        { series: 'imperial_chronicle_cold_steel' },
-        { series: 'red_moon_rose' },
-        { series: 'imperial_railways_a_history' },
-        { series: 'erebonian_folklore' },
-        { series: 'sports_beyond_tradition' },
-        { series: 'the_media_generational_conflicts' },
-        { series: 'the_reinford_group_past_to_present' },
-        { series: 'imperial_chronicle_cold_steel_ii' },
-        { series: 'black_records' },
-        { series: 'gambler_jack_ii' },
-        { series: 'crossbell_times_cold_steel_ii' },
-        { series: 'imperial_chronicle_cold_steel_iii' },
-        { series: 'black_records' },
-        { series: 'heartless_edgar' },
-        { series: 'the_immoral_hero' },
-        { series: 'coby_and_the_mysterious_museum' },
-        { series: 'the_life_of_tomatonio' },
-        { series: 'crossbell_province_tourist_information' },
-        { series: 'marching_towards_dystopia' },
-        { series: 'the_northern_war' },
-        { series: 'panzer_soldat_almanac_1206' },
-        { series: 'understanding_board_games' },
-        { series: 'imperial_chronicle_cold_steel_iv' },
-        { series: 'black_records' },
-        { series: 'three_and_nine' },
-        { series: 'a_coco_pandas_tale' },
-        { series: 'if_you_say_goodbye' },
-        { series: 'the_legendary_chosen_one' },
-        { series: 'crossbell_times_cold_steel_iv' },
-        { series: 'crossbell_times_reverie' },
-        { series: 'imperial_chronicle_reverie' },
-        { series: 'moonless_morn' },
-        { series: 'tyrell_times_daybreak' }
-	];
+    let entries = [];
+
+    for (const game of data) {
+        for (const series of game.series) {
+            entries.push({ series: series.slug });
+        }
+    }
+
+    return entries;
 }

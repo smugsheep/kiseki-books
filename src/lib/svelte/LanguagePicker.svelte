@@ -27,7 +27,7 @@
     }
 
     .nav-item {
-        font-size: var(--fs-norm);
+        font-size: var(--fs-reg);
         background: none;
         border: none;
         text-decoration: none;
