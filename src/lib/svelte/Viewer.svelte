@@ -133,6 +133,7 @@
         display: flex;
         flex-direction: column;
         flex: 1;
+        color: inherit;
     }
 
     .top {
@@ -156,30 +157,29 @@
 
     select, option, button {
         height: 42px;
-        background-color: #f9f9f9;
+        background-color: var(--bg-white);
         font-family: inherit;
-        font-size: 1em;
-        border: 1px solid #ccc;
+        font-size: var(--fs-norm);
+        border: 1px solid var(--bg-gray);
         border-radius: 4px;
         cursor: pointer;
         transition: background-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     button {
-        background-color: #007bff;
+        background-color: var(--click-blue);
         color: white;
         border: none;
         padding: 0 1em;
     }
 
     button:disabled {
-        background-color: #ddd;
+        background-color: var(--click-disabled);
         cursor: default;
     }
 
     button:hover:not(:disabled) {
-        background-color: #0056b3;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: var(--click-blue-hover);
     }
 
     select {
@@ -189,8 +189,8 @@
 
     select:focus {
         outline: none;
-        border-color: #007bff;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        border-color: var(--click-blue);
+        box-shadow: 0 0 2px var(--click-blue-hover);
     }
 
     select:disabled {
@@ -199,7 +199,7 @@
 
     #viewer {
         padding-right: 2em;
-        font-size: 1.5em;
+        font-size: var(--fs-reg);
         text-align: justify;
         height: 100%;
         overflow-y: scroll;
@@ -212,7 +212,7 @@
         }
 
         #viewer {
-            font-size: 1.4em;
+            font-size: var(--fs-reg);
             padding-bottom: 5em;
         }
 
@@ -231,7 +231,7 @@
         }
         
         h1 {
-            font-size: 1.4em;
+            font-size: var(--fs-big);
             color: white;
         }
 
@@ -243,7 +243,7 @@
 
     @media (max-width: 768px) {
         #viewer, h1 {
-            font-size: 1.2em;
+            font-size: var(--fs-norm);
         }
     }
 </style>

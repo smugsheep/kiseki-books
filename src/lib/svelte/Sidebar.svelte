@@ -95,7 +95,7 @@
         margin: 0;
         padding: 0;
         padding-right: 1em;
-        width: 240px;
+        width: 270px;
         height: 100%;
         overflow-y: scroll;
     }
@@ -107,7 +107,7 @@
     .game-divider {
         margin: 0;
         text-transform: uppercase;
-        font-size: 1.2em;
+        font-size: var(--fs-norm);
         color: #313131;
         display: flex;
         align-items: center;
@@ -116,7 +116,7 @@
     }
 
     .game-divider span {
-        font-size: 0.8em;
+        font-size: var(--fs-small);
     }
 
     .game-divider:hover {
@@ -124,11 +124,11 @@
     }
 
     button, a {
-        font-size: 1.28em;
+        font-size: var(--fs-norm);
         background: none;
         border: none;
         padding: 0;
-        color: rgb(26, 135, 189);
+        color: var(--click-teal);
         cursor: pointer;
         text-align: left;
         display: block;

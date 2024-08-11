@@ -1,10 +1,28 @@
+main {
+    --primary: #333;
+    --click-teal: #147db1;
+    --click-blue: #007bff;
+    --click-blue-hover: #005aba;
+    --click-disabled: #ddd;
+    --bg-white: #f9f9f9;
+    --bg-gray: #ccc;
+    --error-red: #bb1a55;
+    --error-gray: #808080;
+
+    --fs-extra: 2.4em;
+    --fs-big: 2em;
+    --fs-reg: 1.2em;
+    --fs-norm: 1.0em;
+    --fs-small: 0.8em;
+}
+
 @font-face {
     font-family: 'Noto Sans JP';
     src: url(notosansjp.ttf);
 }
 
 body {
-	color: #333;
+	color: var(--primary);
 	margin: 0;
 	font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif !important;
 }
@@ -20,7 +38,7 @@ p {
 }
 
 a, a:visited {
-    color: #244b7d;
+    color: var(--click-teal);
 }
 
 figure {
@@ -31,7 +49,7 @@ figure {
 }
 
 figcaption {
-    font-size: 0.8em;
+    font-size: var(--fs-small);
     font-style: italic;
 }
 
@@ -55,7 +73,7 @@ blockquote > *:first-child {
 hr {
     border: 0;
     height: 1px;
-    background-color: #333;
+    background-color: var(--main);
 }
 
 dt {
@@ -63,12 +81,12 @@ dt {
 }
 
 .unavailable {
-    color: rgb(194, 29, 98);
+    color: var(--error-red);
     font-weight: 700;
 }
 
 .spoiler { 
-    color: rgb(175, 175, 175);
+    color: var(--error-gray);
 }
 
 @media (max-width: 1080px) {

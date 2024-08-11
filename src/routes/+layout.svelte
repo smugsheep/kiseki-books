@@ -28,7 +28,7 @@
 
     .header {
         margin-top: 1em;
-        border-bottom: 1px #333 solid;
+        border-bottom: 1px var(--primary) solid;
         display: flex;
         flex-direction: row;
         align-items: end;
@@ -36,7 +36,7 @@
     }
 
     h1 {
-        font-size: 3em;
+        font-size: var(--fs-extra);
         margin: 0;
     }
 

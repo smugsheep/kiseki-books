@@ -27,7 +27,7 @@
     }
 
     .nav-item {
-        font-size: 1.28em;
+        font-size: var(--fs-norm);
         background: none;
         border: none;
         text-decoration: none;
@@ -39,13 +39,13 @@
     }
 
     .nav-item:hover {
-        color: #007bff;
+        color: var(--click-blue);
     }
 
     .nav-item:not(:last-child)::after {
         padding: 0 8px;
         content: '/';
-        color: #333;
+        color: var(--primary);
     }
 
     a, a:visited {
